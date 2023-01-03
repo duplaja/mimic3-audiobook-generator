@@ -17,8 +17,7 @@ for line in fin:
     rendered = ''
 
     if '\n' == line:
-        #A pause after a paragraph
-        rendered = ''
+        continue
     else:
         #A pause after a sentence
         linestrip = line.strip()
