@@ -1,11 +1,27 @@
 #!/usr/bin/python3
 import subprocess
 import os
+import argparse
+
+parser = argparse.ArgumentParser()
+parser._action_groups.pop()
+required = parser.add_argument_group('required arguments')
+optional = parser.add_argument_group('optional arguments')
+
+required.add_argument("-a", "--author", help="story author", type=str, required=True)
+required.add_argument("-t", "--title", help="story title", type=str, required=True)
+required.add_argument("-i", "--inputfile", help="story file (input txt filename)", type=str, required=True)
+
+args = parser.parse_args()
 
 #Enter / change below as needed
-inputfilename = "to2c.txt"
-author = "Charles Dickens"
-title = "Tale of Two Cities"
+inputfilename = args.inputfile
+author = args.author
+title = args.title
+
+
+print(title)
+print(author)
 
 mimicvoice = "en_US/m-ailabs_low"
 
