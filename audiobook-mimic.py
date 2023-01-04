@@ -13,7 +13,7 @@ mimicvoice = "en_US/m-ailabs_low"
 outputname = author+' - '+title
 
 outputpath = author+"/"+title
-outputname = author+" - "+title #no spaces, no extension
+outputname = title+" - "+author #no extension
 
 #Makes the appropriate folder structure
 cwd = os.getcwd()
