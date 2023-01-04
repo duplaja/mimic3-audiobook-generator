@@ -1,0 +1,4 @@
+subprocess
+os
+argparse
+mycroft-mimic3-tts[all]
