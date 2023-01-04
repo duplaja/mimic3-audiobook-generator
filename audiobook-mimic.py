@@ -14,7 +14,7 @@ required.add_argument("-i", "--inputfile", help="story file (input txt filename)
 
 args = parser.parse_args()
 
-#Enter / change below as needed
+#From command line args
 inputfilename = args.inputfile
 author = args.author
 title = args.title
