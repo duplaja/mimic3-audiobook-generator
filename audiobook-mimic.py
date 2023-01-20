@@ -14,7 +14,7 @@ required.add_argument("-i", "--inputfile", help="story file (input txt filename)
 
 args = parser.parse_args()
 
-#From command line args
+#Input from argparse
 inputfilename = args.inputfile
 author = args.author
 title = args.title
@@ -36,6 +36,16 @@ cwd = os.getcwd()
 os.mkdir(cwd+'/'+author)
 os.mkdir(cwd+'/'+outputpath)
 
+table = str.maketrans({
+    "<": "&lt;",
+    ">": "&gt;",
+    "&": "&amp;",
+    "'": "&apos;",
+    '"': "&quot;",
+})
+def xmlesc(txt):
+    return txt.translate(table)
+
 #Begins the process
 fin = open(inputfilename, "rt", encoding='utf-8')
 fout = open(outputname+".txt", "wt", encoding='utf-8')
@@ -49,10 +59,12 @@ for line in fin:
         continue
     else:
         #A pause after a sentence
+        
+        line = line.encode('utf-8', errors='ignore').decode('utf-8')
         linestrip = line.strip()
-        rendered = '<p>'+linestrip+'</p>'
+        rendered = '<p>'+xmlesc(linestrip)+'</p>'
 
-        rendered = rendered.encode('utf-8').decode('utf-8')
+        #rendered = rendered.encode('utf-8').decode('utf-8')
         fout.write(rendered)
 
 fout.write('</speak>')
