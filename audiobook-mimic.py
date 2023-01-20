@@ -40,8 +40,8 @@ table = str.maketrans({
     "<": "&lt;",
     ">": "&gt;",
     "&": "&amp;",
-    "'": "&apos;",
-    '"': "&quot;",
+    #"'": "&apos;",
+    #'"': "&quot;",
 })
 def xmlesc(txt):
     return txt.translate(table)
